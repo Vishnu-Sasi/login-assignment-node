@@ -75,7 +75,7 @@ const deleteFile = async (req, res) => {
     fs.unlinkSync(filePath);
 
     // Delete the file entry from the database
-    await file.remove();
+    await file.deleteOne({code})
 
     res.status(200).json({ message: 'File deleted successfully' });
   } catch (error) {
